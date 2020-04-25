@@ -7,16 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import org.ensak.back_office.MainBackOffice;
 import org.ensak.back_office.metier.managerbeans.DivisionManager;
 import org.ensak.back_office.modele.Division;
 
-import javax.swing.text.TabableView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -28,12 +23,6 @@ import javafx.scene.control.Label;
 public class DivsionController implements Initializable {
 
     public TextField nomDivision;
-    @FXML
-    public Label Lnumero;
-    @FXML
-    public Label Lnom;
-    @FXML
-    public Label LchefDivision;
     @FXML
     private TableView<Division> tableDivision;
     @FXML
@@ -77,7 +66,7 @@ public class DivsionController implements Initializable {
             {
                 Button button = new Button("Consulter");
                 dataDivisionView.add(new Division(String.valueOf(division.getId()),division.getNomDivision(),division.getChefDivision().getNom(),button));
-                button.setOnAction(ConsulterDivisionControlleur::consulterDivision);
+                button.setOnAction(event -> ConsulterDivisionControlleur.consulterDivision());
             }
 
             tableDivision.setItems(dataDivisionView);

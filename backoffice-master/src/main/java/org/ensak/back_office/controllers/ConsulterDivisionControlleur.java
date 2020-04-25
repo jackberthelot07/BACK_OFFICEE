@@ -3,27 +3,38 @@ package org.ensak.back_office.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import org.ensak.back_office.MainBackOffice;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ConsulterDivisionControlleur {
-    public Label numero;
+public class ConsulterDivisionControlleur implements Initializable {
     @FXML
-    public static Label Lnumero;
+    public static Label numero;
     @FXML
-    public static Label Lnom;
+    public Label Lnom;
     @FXML
-    public static Label LchefDivision;
+    public Label LchefDivision;
+    String s;
+    // @FXML
+    //public static Label Lnumero;
+   // @FXML
+   // public static Label Lnom;
+    //@FXML
+    //public static Label LchefDivision;
 
 
-    public static void consulterDivision(ActionEvent event) {
-        LchefDivision.setText("");
-      //Lnom.setText(division.getNomDivision());
-     //LchefDivision.setText(division.getChefDivision().getNom());
+    public ConsulterDivisionControlleur(String s) {
+        this.s = s;
+    }
+
+    public static void consulterDivision() {
+
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainBackOffice.class.getResource("/views/consulterDivision.fxml"));
@@ -32,5 +43,12 @@ public class ConsulterDivisionControlleur {
         } catch (IOException e) {
             Logger.getLogger(ConsulterDivisionControlleur.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Lnom.setText(s);
+
     }
 }

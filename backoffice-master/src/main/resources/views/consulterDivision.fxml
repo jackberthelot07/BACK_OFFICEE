@@ -36,6 +36,7 @@
                         <font>
                             <Font name="System Bold" size="15" />
                         </font>
+
                     </Label>
 
                     <!--Chef de division-->
@@ -44,7 +45,7 @@
                             <Font name="System" size="15" />
                         </font>
                     </Label>
-                    <Label  fx:id="LchefDivision" text=""  GridPane.rowIndex="2" GridPane.columnIndex="1">
+                    <Label  fx:id="LchefDivision"  GridPane.rowIndex="2" GridPane.columnIndex="1">
                         <font>
                             <Font name="System Bold" size="15" />
                         </font>
