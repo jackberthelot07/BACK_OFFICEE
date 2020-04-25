@@ -10,7 +10,8 @@
 <?import javafx.scene.text.*?>
 
 
-<AnchorPane prefHeight="600" prefWidth="600" style="-fx-background-color:#DDD" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ensak.back_office.controllers.DivsionController">
+<AnchorPane prefHeight="600" prefWidth="600" style="-fx-background-color:#DDD"  xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="org.ensak.back_office.controllers.DivsionController">
     <VBox spacing="30">
         <BorderPane prefHeight="50" prefWidth="800" style="-fx-background-color:#6AA84F">
             <padding>
@@ -43,7 +44,7 @@
 
         <HBox>
             <!-- Bouton pour ajouter une nouvelle division -->
-            <Button fx:id="ajouterDivision" prefHeight="40" prefWidth="40" style="-fx-background-color:transparent">
+            <Button fx:id="ajouterDivision" onAction="#addDivision" prefHeight="40" prefWidth="40" style="-fx-background-color:transparent">
                 <graphic>
                     <ImageView>
                         <image>
@@ -71,22 +72,22 @@
                 <Insets left="10" right="10" />
             </padding>
             <columns>
-                <TableColumn prefWidth="128" text="Numéro">
+                <TableColumn fx:id="numero" prefWidth="128" text="Numéro">
                     <cellValueFactory>
                         <PropertyValueFactory property="numero" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="243" text="Nom">
+                <TableColumn fx:id="nom" prefWidth="243" text="Nom">
                     <cellValueFactory>
                         <PropertyValueFactory property="nom" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="248" text="Chef de division">
+                <TableColumn fx:id="chefDivision" prefWidth="248" text="Chef de division">
                     <cellValueFactory>
                         <PropertyValueFactory property="chefDivision" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="162" text="Actions">
+                <TableColumn fx:id="buton" prefWidth="162" text="Actions">
                     <cellValueFactory>
                         <PropertyValueFactory property="consulter" />
                     </cellValueFactory>

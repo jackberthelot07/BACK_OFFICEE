@@ -8,7 +8,8 @@
 <?import javafx.scene.text.*?>
 
 
-<BorderPane prefHeight="300" prefWidth="800" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ensak.back_office.controllers.DivsionController">
+<BorderPane prefHeight="300" prefWidth="800" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="org.ensak.back_office.controllers.AjouterDivsionController">
     <top>
         <TitledPane text="Créer/Modifier une division">
             <VBox spacing="30">
@@ -19,7 +20,7 @@
                          <Font name="System Bold" size="15" />
                       </font>
                     </Label>
-                    <TextField fx:id="nom" prefWidth="200" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <TextField fx:id="nomDivision" prefWidth="200" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
                     <!--Chef de division-->
                     <Label text="Chef de division" GridPane.columnIndex="0" GridPane.rowIndex="1">
@@ -27,7 +28,7 @@
                             <Font name="System Bold" size="15" />
                         </font>
                     </Label>
-                    <ComboBox fx:id="chefDivision" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <ComboBox fx:id="chefdivision" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     </ComboBox>
 
                     <!--Employé -->
@@ -39,7 +40,7 @@
                     <ComboBox fx:id="lstEmploye" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     </ComboBox>
 
-                    <Button style="-fx-background-color:#009E0F" text="Ajouter" textFill="white" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                    <Button  style="-fx-background-color:#009E0F" text="Ajouter" textFill="white" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                 </GridPane>
 
                 <TitledPane prefWidth="300" text="Listes des employés" GridPane.columnSpan="3" GridPane.rowIndex="3">
@@ -65,11 +66,6 @@
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <Employe nom="Abdoul Karim" numero="100" />
-                            </FXCollections>
-                        </items>
 
                     </TableView>
                 </TitledPane>

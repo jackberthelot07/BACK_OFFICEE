@@ -48,6 +48,7 @@ public class LoginController implements Initializable {
             stage.setTitle("Page D'accueil");
             stage.setScene(new Scene(root, 1200, 800));
             stage.show();*/
+
             MenuController.Menu();
         }
         else {

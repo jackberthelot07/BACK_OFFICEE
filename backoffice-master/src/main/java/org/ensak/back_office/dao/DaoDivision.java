@@ -2,6 +2,7 @@ package org.ensak.back_office.dao;
 
 import org.ensak.back_office.metier.beans.Division;
 import org.ensak.back_office.metier.beans.Employe;
+import org.ensak.back_office.metier.beans.EmployeDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +14,10 @@ import java.util.List;
 public class DaoDivision implements InterfaceDaoDivision {
 
     private static final Connection conn = ConnexionBD.connexion();
-    private static final String TABLE_NAME = "division";
-    private static final String TB_EMPLOYES_NAME = "employes";
+    private static String TABLE_NAME = "division";
+    private static String TB_EMPLOYES_NAME = "employes";
     private Division division;
-    private  String query_employes = "SELECT * FROM" + TB_EMPLOYES_NAME + "WHERE id_division=?";
+    private static String query_employes = "SELECT * FROM" + TB_EMPLOYES_NAME + "WHERE chef_division=?";
 
     @Override
     public Division getDivisionById(int id) throws SQLException {
@@ -44,14 +45,24 @@ public class DaoDivision implements InterfaceDaoDivision {
     }
 
     @Override
-    public boolean addDivision(final Division division) {
-        return false;
+    public boolean addDivision(final Division division) throws SQLException {
+        String query = "INSERT INTO" +TABLE_NAME+"(nom,chef_division) VALUES(?,?)";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1,division.getNomDivision());
+        preparedStatement.setInt(2,division.getChefDivision().getNumero());
+
+        return preparedStatement.execute();
     }
 
     @Override
-    public final boolean updateDivision(final Division division) {
+    public final boolean updateDivision(final Division division) throws SQLException {
 
-        return false;
+        String query = "INSERT INTO" +TABLE_NAME+"(nom,chef_division) VALUES(?,?)";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1,division.getNomDivision());
+        preparedStatement.setInt(2,division.getChefDivision().getNumero());
+
+        return preparedStatement.execute();
     }
 
     @Override
@@ -62,48 +73,48 @@ public class DaoDivision implements InterfaceDaoDivision {
             final int id = division.getId();
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
-            return true;
+            return preparedStatement.execute();
         }
 
 
     }
 
-    @Override
-    public List<Division> getAllDivision() throws SQLException {
+
+    public static List<Division> getAllDivision() throws SQLException {
         PreparedStatement preparedStatement=null;
         List<Division> divisions = new ArrayList<>();
         ArrayList<Employe> employes = new ArrayList<Employe>();
         String query  = "SELECT * FROM"+TABLE_NAME;
-        Division division = new Division();
         try {
-            preparedStatement = conn.prepareStatement(query);
+            preparedStatement = conn.prepareStatement("select * from division");
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next())
             {
                 int id =resultSet.getInt(1);
-                division.setId(id);
-                division.setNomDivision(resultSet.getString(2));
-                division.setChefDivision(EmployeDao.getEmploye(resultSet.getInt(3)));
-                PreparedStatement preparedStatement1 =conn.prepareStatement(query_employes);
+               PreparedStatement preparedStatement1 =conn.prepareStatement("select * from employes where id=?");
                 preparedStatement1.setInt(1,id);
                 ResultSet resultSet1 = preparedStatement1.executeQuery();
                 while (resultSet1.next())
                 {
                     employes.add(EmployeDao.getEmploye(id));
                 }
-                division.setEmployes(employes);
 
+
+                Division division = new Division(id,resultSet.getString(2),EmployeDao.getEmploye(resultSet.getInt(3)),employes);
+
+                divisions.add(division);
             }
-            divisions.add(division);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+
+            return divisions;
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
         }
-        return divisions;
+
     }
 
     @Override
-    public boolean addEmployeDiviision(Division division, Employe employe) throws SQLException {
+    public boolean addEmployeDivision(Division division, Employe employe) throws SQLException {
         String query = "INSERT INTO employe (id_division) VALUES (?) WHERE id =?";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setInt(1,division.getId());

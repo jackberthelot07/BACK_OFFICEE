@@ -6,9 +6,8 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import org.example.modele.*?>
 
-<BorderPane prefHeight="300" prefWidth="800" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.divisionControlleur">
+<BorderPane prefHeight="300" prefWidth="800" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ensak.back_office.controllers.ConsulterDivisionControlleur">
     <top>
         <TitledPane text="Consulter une division">
             <VBox spacing="30">
@@ -21,7 +20,7 @@
                         </font>
                     </Label>
 
-                    <Label fx:id="numero" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <Label fx:id="Lnumero"  GridPane.rowIndex="0" GridPane.columnIndex="1">
                         <font>
                             <Font name="System Bold" size="15" />
                         </font>
@@ -33,19 +32,19 @@
                             <Font name="System" size="15" />
                         </font>
                     </Label>
-                    <Label fx:id="nom" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <Label fx:id="Lnom" GridPane.rowIndex="1" GridPane.columnIndex="1">
                         <font>
                             <Font name="System Bold" size="15" />
                         </font>
                     </Label>
 
                     <!--Chef de division-->
-                    <Label text="Chef de division" GridPane.rowIndex="2" GridPane.columnIndex="0">
+                    <Label text="Chef de division"  GridPane.rowIndex="2" GridPane.columnIndex="0">
                         <font>
                             <Font name="System" size="15" />
                         </font>
                     </Label>
-                    <Label  fx:id="chefDivision" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                    <Label  fx:id="LchefDivision" text=""  GridPane.rowIndex="2" GridPane.columnIndex="1">
                         <font>
                             <Font name="System Bold" size="15" />
                         </font>
@@ -84,11 +83,6 @@
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
-                        <items>
-                            <FXCollections fx:factory="observableArrayList">
-                                <Employe nom="Abdoul Karim" numero="100" />
-                            </FXCollections>
-                        </items>
 
                     </TableView>
                 </TitledPane>
