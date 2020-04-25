@@ -61,6 +61,7 @@ public class DivsionController implements Initializable {
         chefDivision.setCellValueFactory(new PropertyValueFactory<Division,String>("ChefDivision"));
         buton.setCellValueFactory(new PropertyValueFactory<Division,Button>("consulter"));
         try {
+
             ObservableList<Division> dataDivisionView = FXCollections.observableArrayList();
             for(org.ensak.back_office.metier.beans.Division division: DivisionManager.getAllDivisions())
             {

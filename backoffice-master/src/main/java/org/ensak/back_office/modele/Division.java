@@ -15,7 +15,6 @@ public class Division {
         this.chefDivision = chefDivision;
         this.consulter = button;
         consulter.setStyle("-fx-background-color:#FF9900");
-        consulter.setOnAction(event -> {});
 
     }
 

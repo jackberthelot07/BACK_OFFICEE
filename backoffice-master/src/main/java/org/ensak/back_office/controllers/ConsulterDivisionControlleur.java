@@ -1,6 +1,5 @@
 package org.ensak.back_office.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,21 +16,10 @@ public class ConsulterDivisionControlleur implements Initializable {
     @FXML
     public static Label numero;
     @FXML
-    public Label Lnom;
+    public static Label Lnom;
     @FXML
     public Label LchefDivision;
-    String s;
-    // @FXML
-    //public static Label Lnumero;
-   // @FXML
-   // public static Label Lnom;
-    //@FXML
-    //public static Label LchefDivision;
 
-
-    public ConsulterDivisionControlleur(String s) {
-        this.s = s;
-    }
 
     public static void consulterDivision() {
 
@@ -48,7 +36,7 @@ public class ConsulterDivisionControlleur implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Lnom.setText(s);
+        Lnom.setText("ok");
 
     }
 }
