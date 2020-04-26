@@ -34,11 +34,14 @@ public class DivsionController implements Initializable {
     @FXML
     private TableColumn<Division,String> numero;
 
-
-    public void afficheDivisions()
-    {
-
+    public DivsionController() {
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        load();
+    }
+
     public void ajouterDivision() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -54,8 +57,8 @@ public class DivsionController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void load()
+    {
         numero.setCellValueFactory(new PropertyValueFactory<Division,String>("numero"));
         nom.setCellValueFactory(new PropertyValueFactory<Division,String >("nom"));
         chefDivision.setCellValueFactory(new PropertyValueFactory<Division,String>("ChefDivision"));
@@ -67,13 +70,16 @@ public class DivsionController implements Initializable {
             {
                 Button button = new Button("Consulter");
                 dataDivisionView.add(new Division(String.valueOf(division.getId()),division.getNomDivision(),division.getChefDivision().getNom(),button));
-                button.setOnAction(event -> ConsulterDivisionControlleur.consulterDivision());
+                button.setOnAction(event -> {
+                    ConsulterDivisionControlleur.id=division.getId();
+                    ConsulterDivisionControlleur.consulterDivision();});
             }
 
             tableDivision.setItems(dataDivisionView);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
 
     }
 

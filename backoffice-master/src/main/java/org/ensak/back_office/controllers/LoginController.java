@@ -21,10 +21,6 @@ public class LoginController implements Initializable {
     private TextField login;
     @FXML
     private TextField pass;
-    @FXML
-    private Button loginBoutton;
-    @FXML
-    private Button logoutBoutton;
 
 
     /**
@@ -42,13 +38,6 @@ public class LoginController implements Initializable {
         validationConnexion = adminConnexion.validation(login, pass);
         if (validationConnexion)
         {
-            /*Stage stage = new Stage();
-            System.out.println(getClass());
-            Parent root = FXMLLoader.load(getClass().getResource("/views/menu.fxml"));
-            stage.setTitle("Page D'accueil");
-            stage.setScene(new Scene(root, 1200, 800));
-            stage.show();*/
-
             MenuController.Menu();
         }
         else {

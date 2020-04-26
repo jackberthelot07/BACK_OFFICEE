@@ -2,7 +2,6 @@ package org.ensak.back_office.dao;
 
 import org.ensak.back_office.metier.beans.Division;
 import org.ensak.back_office.metier.beans.Employe;
-import org.ensak.back_office.metier.beans.EmployeDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,13 +18,21 @@ public class DaoDivision implements InterfaceDaoDivision {
     private Division division;
     private static String query_employes = "SELECT * FROM" + TB_EMPLOYES_NAME + "WHERE chef_division=?";
 
+    /**
+     * cette methode permet de recuperer une
+     * division au travers de son id entré en parametre
+     * @param id
+     * @return
+     * @throws SQLException
+     */
+
     @Override
     public Division getDivisionById(int id) throws SQLException {
 
         ArrayList<Employe> employes = new ArrayList<Employe>();
-        String query = "SELECT * FROM" + TABLE_NAME + "WHERE id =?";
-        PreparedStatement preparedStatement = DaoDivision.conn.prepareStatement(query);
-        PreparedStatement preparedStatement1 = conn.prepareStatement(query_employes);
+        //String query = "SELECT * FROM" + TABLE_NAME + "WHERE id =?";
+        PreparedStatement preparedStatement = DaoDivision.conn.prepareStatement("select * from division where id=?");
+        PreparedStatement preparedStatement1 = conn.prepareStatement("select * from employes where id=?");
         preparedStatement.setInt(1, id);
         preparedStatement1.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -34,10 +41,10 @@ public class DaoDivision implements InterfaceDaoDivision {
         if (resultSet.next()) {
             division.setId(resultSet.getInt(1));
             division.setNomDivision(resultSet.getString(2));
-            division.setChefDivision(EmployeDao.getEmploye(resultSet.getInt(3)));
+            division.setChefDivision(EmployeDao.getEmployeBid(resultSet.getInt(3)));
         }
         while (resultSetemployes.next()) {
-            employes.add(EmployeDao.getEmploye(id));
+            employes.add(EmployeDao.getEmployeBid(id));
         }
         division.setEmployes(employes);
 
@@ -65,12 +72,19 @@ public class DaoDivision implements InterfaceDaoDivision {
         return preparedStatement.execute();
     }
 
-    @Override
-    public final boolean deleteDivision(final Division division) throws SQLException {
+    /**
+     * cette methode permet de supprimer une division presente dans la base de
+     * données aiu travers de son id
+     * @param id
+     * @return
+     * @throws SQLException
+     */
 
-        String query = "DELETE FROM"+TABLE_NAME+"WHERE id=?";
-        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-            final int id = division.getId();
+    @Override
+    public final boolean deleteDivision(int id) throws SQLException {
+
+        //String query = "DELETE FROM"+TABLE_NAME+"WHERE id=?";
+        try (PreparedStatement preparedStatement = conn.prepareStatement("delete from division where id=?")) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             return preparedStatement.execute();
@@ -79,6 +93,12 @@ public class DaoDivision implements InterfaceDaoDivision {
 
     }
 
+    /**
+     * cette methode permet de recuperer toutes les division
+     * presentes dans la base de données
+     * @return
+     * @throws SQLException
+     */
 
     public static List<Division> getAllDivision() throws SQLException {
         PreparedStatement preparedStatement=null;
@@ -97,11 +117,11 @@ public class DaoDivision implements InterfaceDaoDivision {
                 ResultSet resultSet1 = preparedStatement1.executeQuery();
                 while (resultSet1.next())
                 {
-                    employes.add(EmployeDao.getEmploye(id));
+                    employes.add(EmployeDao.getEmployeBid(id));
                 }
 
 
-                Division division = new Division(id,resultSet.getString(2),EmployeDao.getEmploye(resultSet.getInt(3)),employes);
+                Division division = new Division(id,resultSet.getString(2),EmployeDao.getEmployeBid(resultSet.getInt(3)),employes);
 
                 divisions.add(division);
             }

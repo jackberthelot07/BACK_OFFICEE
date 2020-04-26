@@ -2,74 +2,79 @@ package org.ensak.back_office.metier.beans;
 
 public class Employe {
     private int numero;
-    private String Nom;
-    private String Prenom;
-
+    private String nom;
+    private String prenom;
     private String email;
     private String tele;
-    private String Password;
+    private String password;
     public Employe() {
         // TODO Auto-generated constructor stub
         super();
     }
 
-
-
-
     public Employe(int numero, String nom, String prenom, String email, String tele, String password) {
         super();
         this.numero = numero;
-        Nom = nom;
-        Prenom = prenom;
+        this.nom = nom;
+        this.prenom = prenom;
         this.email = email;
         this.tele = tele;
-        this.Password = password;
+        this.password = password;
     }
-
-
-
+    public Employe(int numero, String nom, String prenom, String email, String tele) {
+        super();
+        this.numero = numero;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.tele = tele;
+    }
 
     public int getNumero() {
         return numero;
     }
+
     public void setNumero(int numero) {
         this.numero = numero;
     }
+
     public String getNom() {
-        return Nom;
+        return nom;
     }
+
     public void setNom(String nom) {
-        Nom = nom;
+        this.nom = nom;
     }
+
     public String getPrenom() {
-        return Prenom;
+        return prenom;
     }
+
     public void setPrenom(String prenom) {
-        Prenom = prenom;
+        this.prenom = prenom;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getTele() {
         return tele;
     }
+
     public void setTele(String tele) {
         this.tele = tele;
     }
+
     public String getPassword() {
-        return Password;
-    }
-    public void setPassword(String password) {
-        this.Password = password;
+        return password;
     }
 
-
-
-
-
-
-
+    public void setPassword(String pass) {
+        password = pass;
+    }
 }

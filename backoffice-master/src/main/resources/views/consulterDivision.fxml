@@ -53,34 +53,24 @@
                 </GridPane>
 
                 <TitledPane prefWidth="300" text="Listes des employés" GridPane.columnSpan="3" GridPane.rowIndex="3">
-                    <TableView>
+                    <TableView fx:id="employes">
                         <padding>
                             <Insets top="10" />
                         </padding>
                         <columns>
-                            <TableColumn prefWidth="128" text="Numéro">
+                            <TableColumn fx:id="num" prefWidth="128" text="Numéro">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="numero" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="480" text="Nom">
+                            <TableColumn fx:id="nom" prefWidth="350" text="Nom">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="nom" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="480" text="Prénom">
+                            <TableColumn fx:id="prenom" prefWidth="350" text="Prénom">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="prenom" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="480" text="Email">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="email" />
-                                </cellValueFactory>
-                            </TableColumn>
-                            <TableColumn prefWidth="480" text="Téléphone">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="telephone" />
                                 </cellValueFactory>
                             </TableColumn>
                         </columns>
@@ -96,9 +86,9 @@
             <padding>
                 <Insets topRightBottomLeft="10" />
             </padding>
-            <Button fx:id="modifier" style="-fx-background-color:#009E0F" text="Modifier" textFill="white" />
-            <Button fx:id="supprimer" style="-fx-background-color:#FFFF00" text="Supprimer" textFill="black" />
-            <Button fx:id="annuler" style="-fx-background-color:#990000" text="Annuler" textFill="white" />
+            <Button fx:id="modifier" onAction="#modifierDivision" style="-fx-background-color:#009E0F" text="Modifier" textFill="white" />
+            <Button fx:id="supprimer" onAction="#supprimerDivision" style="-fx-background-color:#FFFF00" text="Supprimer" textFill="black" />
+            <Button fx:id="annuler" onAction="#annuler" style="-fx-background-color:#990000" text="Retour" textFill="white" />
         </HBox>
     </bottom>
 </BorderPane>

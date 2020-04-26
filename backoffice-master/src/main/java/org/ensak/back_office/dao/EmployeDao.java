@@ -1,8 +1,9 @@
-package org.ensak.back_office.metier.beans;
+package org.ensak.back_office.dao;
 
 
 
 import org.ensak.back_office.dao.ConnexionBD;
+import org.ensak.back_office.metier.beans.Employe;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,7 +40,7 @@ public class EmployeDao {
         return Employes;
 
     }
-    public static Employe getEmploye(Integer id) throws SQLException{
+    public static Employe getEmployeBid(int id) throws SQLException{
         Employe empl = null;
         PreparedStatement preparedStatement;
         try {
@@ -52,7 +53,6 @@ public class EmployeDao {
                 empl.setNom(resultSet.getString(2));
                 empl.setPrenom(resultSet.getString(3));
                 empl.setPassword(resultSet.getString(4));
-
 
             }
         } catch (Exception e) {

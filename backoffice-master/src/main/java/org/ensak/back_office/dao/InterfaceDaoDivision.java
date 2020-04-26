@@ -11,7 +11,7 @@ public interface InterfaceDaoDivision {
     public Object getDivisionById(int id) throws SQLException;
     public boolean addDivision(Division division) throws SQLException;
     public boolean updateDivision(Division division) throws SQLException;
-    public boolean deleteDivision(Division division) throws SQLException;
+    public boolean deleteDivision(int id) throws SQLException;
 
     public static List<Division> getAllDivision() {
         return null;
