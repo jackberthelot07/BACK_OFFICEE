@@ -10,12 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.ensak.back_office.dao.*;
+
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController {
 
     @FXML
     private TextField login;
@@ -71,17 +73,11 @@ public class LoginController implements Initializable {
     }
 
 
-
-
     @FXML
-    public void exit(javafx.event.ActionEvent actionEvent) {
+    public void exit(ActionEvent actionEvent) {
 
         System.exit(0);
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

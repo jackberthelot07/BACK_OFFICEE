@@ -3,6 +3,10 @@ package org.ensak.back_office.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * class connexion a la base de données qui respecte le patthern singleton
+ * empechant a cette classe d'etre instanciée
+ */
 public class ConnexionBD {
 
 

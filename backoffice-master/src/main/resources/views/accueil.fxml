@@ -51,7 +51,7 @@
             </HBox>
         </top>
         <bottom>
-            <Label BorderPane.alignment="BOTTOM_RIGHT"
+            <Label fx:id="nbDivision" BorderPane.alignment="BOTTOM_RIGHT"
                    text="0 Division créée"
                    textFill="white">
                 <padding>
@@ -91,7 +91,7 @@
             </HBox>
         </top>
         <bottom>
-            <Label BorderPane.alignment="BOTTOM_RIGHT"
+            <Label fx:id="nbEmploye" BorderPane.alignment="BOTTOM_RIGHT"
                    text="0 Employé enregistré"
                    textFill="white">
                 <padding>
@@ -120,7 +120,7 @@
                                url="@/images/procedures.png" />
                     </image>
                 </ImageView>
-                <Label text="Procédures" textFill="white">
+                <Label fx:id="nbProcedures" text="Procédures" textFill="white">
                     <padding>
                         <Insets left="10.0" top="20.0" />
                     </padding>

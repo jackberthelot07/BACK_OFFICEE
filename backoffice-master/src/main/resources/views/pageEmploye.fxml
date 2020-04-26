@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="600" prefWidth="600" style="-fx-background-color:#DDD" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ensak.back_office.controllers.EmployeControlleur">
     <VBox spacing="30">
-        <BorderPane prefHeight="50" prefWidth="800" style="-fx-background-color:#2B78E4">
+        <BorderPane prefHeight="50" prefWidth="700" style="-fx-background-color:#2B78E4">
             <padding>
                 <Insets topRightBottomLeft="10" />
             </padding>
@@ -75,19 +75,14 @@
                         <PropertyValueFactory property="numero" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="220" text="Nom">
+                <TableColumn prefWidth="200" text="Nom">
                     <cellValueFactory>
                         <PropertyValueFactory property="nom" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="220" text="Prénom">
+                <TableColumn prefWidth="200" text="Prénom">
                     <cellValueFactory>
                         <PropertyValueFactory property="prenom" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="220" text="Email">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="email" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="220" text="Consulter">

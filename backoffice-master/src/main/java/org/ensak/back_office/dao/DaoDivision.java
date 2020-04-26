@@ -106,6 +106,11 @@ public class DaoDivision implements InterfaceDaoDivision {
         ArrayList<Employe> employes = new ArrayList<Employe>();
         String query  = "SELECT * FROM"+TABLE_NAME;
         try {
+            /**
+             * execution de la commande sql permettant
+             * d'obtenir toutes les division presentes dans
+             * la base de données
+             */
             preparedStatement = conn.prepareStatement("select * from division");
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -128,6 +133,10 @@ public class DaoDivision implements InterfaceDaoDivision {
 
             return divisions;
         } finally {
+            /**
+             * on ajoute ce final pour effectuer le netoyage
+             * pour liberer la ressource.
+             */
             if (preparedStatement != null) preparedStatement.close();
         }
 

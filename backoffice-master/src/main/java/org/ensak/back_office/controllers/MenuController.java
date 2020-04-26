@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MenuController implements Initializable {
+public class MenuController  {
 
     @FXML
     private Button accueil;
@@ -39,16 +39,11 @@ public class MenuController implements Initializable {
     public static Stage stage;
     public static BorderPane mainLayout;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
 
     /**
      *
      * methode qui permet d'afficher le menu de gestion de
-     * l'adminbistrateur
+     * l'adminbistrateur lorsque celui-ci se connecte
      *
      */
     public static void Menu()
@@ -76,6 +71,11 @@ public class MenuController implements Initializable {
         }
 
     }
+    /**
+     * il s'agit d'une methode qui s'executera lorsque l'administrateur
+     * cliquera sur accueil il sera redirigé vers cette page qui donne simplement des racp sur les donnees qu'il gere
+     * @param actionEvent
+     */
     @FXML
     public void accueil(javafx.event.ActionEvent actionEvent) {
 
@@ -89,6 +89,12 @@ public class MenuController implements Initializable {
         activeBtn(accueil,Laccueil);
     }
 
+    /**
+     * il s'agit d'une methode qui s'executera lorsque l'administrateur
+     * cliquera sur gestion de division il sera redirigé vers toutes operations de crud relatives
+     * a cette page il prend en parametre un action listener
+     * @param actionEvent
+     */
     @FXML
     public void division(javafx.event.ActionEvent actionEvent) {
         try {
@@ -101,7 +107,12 @@ public class MenuController implements Initializable {
         activeBtn(division,Ldivision);
     }
 
-
+    /**
+     * il s'agit d'une methode qui s'executera lorsque l'administrateur
+     * cliquera sur gestion employes il sera redirigé vers toutes operations de crud relatives
+     * a cette page il prend en parametre un action listener
+     * @param actionEvent
+     */
     @FXML
     public void employe(javafx.event.ActionEvent actionEvent) {
         try {
@@ -114,6 +125,12 @@ public class MenuController implements Initializable {
         activeBtn(employe,Lemploye);
     }
 
+    /**
+     * il s'agit d'une methode qui s'executera lorsque l'administrateur
+     * cliquera sur procedure il sera redirigé vers toutes operations de crud relatives
+     * a cette page il prend en parametre un action listener
+     * @param actionEvent
+     */
     @FXML
     public void procedure(javafx.event.ActionEvent actionEvent) {
         try {
@@ -126,6 +143,13 @@ public class MenuController implements Initializable {
         activeBtn(procedure,Lprocedure);
     }
 
+
+    /**
+     * cette methode permet simplement de donner un style au
+     * menu losque l'administrateur choisira un boutton il changera de couleur
+     * @param btn
+     * @param img
+     */
 
     private void activeBtn(Button btn , ImageView img) {
 
@@ -145,6 +169,12 @@ public class MenuController implements Initializable {
         img.setStyle("-fx-fill : #FFFFFF");
     }
 
+    /**
+     * il s'agit ici d'une methode qui s'executera
+     * lorsque l'utlisateur voudra se deconnecter
+     * elle prend an parametre un action listener
+     * @param actionEvent
+     */
     public void logOut(ActionEvent actionEvent) {
         MainBackOffice.MainStage.show();
         stage.close();
